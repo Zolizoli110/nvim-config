@@ -24,5 +24,10 @@ lsp_installer.on_server_ready(function(server)
     opts = vim.tbl_deep_extend("force", rust_opts, opts)
   end
 
+  if server.name == "marksman" then
+    local md_opts = require("core.plugin_config.lsp.settings.markdown")
+    opts = vim.tbl_deep_extend("force", md_opts, opts)
+  end
+
   server:setup(opts)
 end)
